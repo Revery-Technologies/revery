@@ -15,9 +15,11 @@
 ## Getting Started
 
 - run `npm install` in the directory
-- run `npm start`
+- run `npm run start`
 - Open the Viro Media App and tap on the menu icon in the top left and tap on "Enter Testbed".
-  Find the ngrok url that was printed in terminal and enter it into the app.
+    - Find the ngrok url that was printed in terminal and enter it into the app.
+- Once the app has loaded on the testbed and you have made changes that you would like to see (make sure to save the file), shake your phone (yes shake), you will see a pop up and click the reload button.
+    - You may want to enable Live Reload. This will reload the app automatically whenever you save a file.
 
 ## Oversimplified Project Structure
 
@@ -29,3 +31,5 @@
   - The Emergency Mode VR environment.
 - /js/LongTermModeVR.js
   - The Long Term Mode VR environment.
+
+Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed.
