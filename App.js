@@ -80,7 +80,7 @@ export default class App extends Component {
                 numberOfLines={1}
                 styles={localStyles.titleText}
               >
-                Welcome to The Embrace
+                Welcome to Revery
               </Text>
             </View>
             <View style={{ padding: 10 }}>
@@ -110,6 +110,18 @@ export default class App extends Component {
             >
               Emergency Mode
             </Button>
+
+            <View style={{padding: 80}}>
+            <Button
+              size="large"
+              status="info"
+              onPress={this._getExperienceButtonOnPress(
+                VR_NAVIGATOR_TYPE_EMERGENCY
+              )}
+            >
+              Settings
+            </Button>
+            </View>
           </View>
         </View>
       </ApplicationProvider>
