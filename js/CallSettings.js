@@ -11,26 +11,32 @@ import {
   Radio
 } from "react-native-ui-kitten";
 
-//Links to both the image and call settings
-const ImageSelection = require("ImageSelection.js");
-const CallSettings= require("CallSettings.js");
-
-
-let UNSET = "UNSET";
-let NAVIGATOR_TYPE_IMAGE_SELECTOR = "IMAGE_SELECTOR";
-let NAVIGATOR_TYPE_CALL_SETTINGS = "CALL_SETTINGS";
-
 export default class Settings extends Component {
   constructor() {
     super();
 
     this.state = {
-      navigatorType = this.navigatorType;
-
-    };
-
+      //testEnabled: false
+    }; // Store the state of settings toggles
   }
+  //On button toggle, save its status using async-storage, then change the state of the button
+  /* something like this
+  getSavedSetting = async (settingName) => {
+    try {
+      const value = await AsyncStorage.getItem(settingName)
+      if(value !== null) {
+        this.setState({settingName:value})
+      }
+    } catch(e) {
+     console.log("No setting status saved for " + settingName)
+    }
+  }
+  // then when the component mounts change the state to what is saved in async-storage
 
+  onChangeTest = (changedState) => {
+    AsyncStorage.setItem("testEnabled", changedState );
+    this.setState({ testEnabled: !this.state.testEnabled }); //toggle the state of the
+  };*/
 
   render() {
     return (
