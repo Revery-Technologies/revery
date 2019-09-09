@@ -1,5 +1,6 @@
 # The Embrace
-
+The Embrace is an accessible VR app, intended for high school students, that aims to decrease feelings of stress and anxiety.  
+The Embrace is created by [Revery Technologies](https://revery.now.sh).
 ### Installation prerequisites
 
 - Download [nodejs](https://nodejs.org/en/)
@@ -27,6 +28,8 @@
   - This is the entry point of the app. This is the screen you see when you first open the app.
 - /js/res
   - This is where the 360 background images and any other VR assets will go.
+- Settings.js
+  - This is, contrary to popular belief, the settings screen.
 - /js/EmergencyModeVR.js
   - The Emergency Mode VR environment.
 - /js/LongTermModeVR.js

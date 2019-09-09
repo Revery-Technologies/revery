@@ -19,12 +19,14 @@ let sharedProps = {
   apiKey: "8165581D-B36A-4FEF-B7AD-C1E650B60C03" // They dont even use my api key? The app works without it...
 };
 
-let LongTermModeScene = require("./js/LongTermModeVR");
-let EmergencyModeScene = require("./js/EmergencyModeVR");
+const LongTermModeScene = require("./js/LongTermModeVR");
+const EmergencyModeScene = require("./js/EmergencyModeVR");
+const SettingsScreen = require("./js/Settings");
 
 let UNSET = "UNSET";
 let VR_NAVIGATOR_TYPE_LONG_TERM = "VR_LONG_TERM";
 let VR_NAVIGATOR_TYPE_EMERGENCY = "VR_EMERGENCY";
+let SETTINGS = "SETTINGS";
 
 let defaultNavigatorType = UNSET;
 
@@ -51,6 +53,8 @@ export default class App extends Component {
       return this._getVRNavigatorLongTerm();
     } else if (this.state.navigatorType == VR_NAVIGATOR_TYPE_EMERGENCY) {
       return this._getVRNavigatorEmergency();
+    } else if (this.state.navigatorType == SETTINGS) {
+      return this._getSettingsScreen();
     }
     // this happens if (this.state.navigatorType == UNSET)
     return this._getExperienceSelector();
@@ -111,16 +115,14 @@ export default class App extends Component {
               Emergency Mode
             </Button>
 
-            <View style={{padding: 80}}>
-            <Button
-              size="large"
-              status="info"
-              onPress={this._getExperienceButtonOnPress(
-                VR_NAVIGATOR_TYPE_EMERGENCY
-              )}
-            >
-              Settings
-            </Button>
+            <View style={{ padding: 80 }}>
+              <Button
+                size="large"
+                status="info"
+                onPress={this._getExperienceButtonOnPress(SETTINGS)}
+              >
+                Settings
+              </Button>
             </View>
           </View>
         </View>
@@ -146,6 +148,21 @@ export default class App extends Component {
         initialScene={{ scene: EmergencyModeScene }}
         onExitViro={this._exitViro}
       />
+    );
+  }
+
+  _getSettingsScreen() {
+    return (
+      <ApplicationProvider mapping={mapping} theme={lightTheme}>
+        <Button
+          size="large"
+          status="info"
+          onPress={this._getExperienceButtonOnPress(UNSET)}
+        >
+          Go Back
+        </Button>
+        <SettingsScreen />
+      </ApplicationProvider>
     );
   }
 
