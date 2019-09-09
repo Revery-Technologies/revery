@@ -10,7 +10,7 @@ import {
   Viro360Image,
 } from 'react-viro';
 
-export default class HelloWorldScene extends Component {
+export default class LongTermMode extends Component {
 
   constructor() {
     super();
@@ -22,7 +22,7 @@ export default class HelloWorldScene extends Component {
     return (
       <ViroScene>
         <Viro360Image source={require('./res/guadalupe_360.jpg')} />
-        <ViroText text="This is long term mode." width={2} height={2} position={[0, 0, -2]} style={styles.helloWorldTextStyle} />
+        <ViroText text="This is long term mode." width={2} height={2} position={[0, 0, -2]} style={styles.textStyle} />
       </ViroScene>
     );
   }
@@ -30,13 +30,13 @@ export default class HelloWorldScene extends Component {
 }
 
 var styles = StyleSheet.create({
-  helloWorldTextStyle: {
+  textStyle: {
     fontFamily: 'Arial',
     fontSize: 12,
-    color: '#ffffff',
+    color: 'white',
     textAlignVertical: 'center',
     textAlign: 'center',  
   },
 });
 
-module.exports = HelloWorldScene;
+module.exports = LongTermMode;
