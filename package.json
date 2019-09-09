@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@eva-design/eva": "^1.0.1",
+    "@react-native-community/async-storage": "^1.6.1",
     "react": "16.8.3",
     "react-native": "^0.59.3",
     "react-native-ui-kitten": "^4.1.1",
