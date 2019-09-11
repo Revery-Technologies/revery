@@ -41,7 +41,7 @@ export default class Settings extends Component {
   render() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <Text>Settings</Text>
+        <Text>Image Settings</Text>
         {/* It will probably end up looking someting like this
         <Radio
         checked={this.state.}
