@@ -55,7 +55,6 @@ export default class Settings extends Component {
     //default case: happens when navigator type is unset
     return this._getHomeScreen();
   }
-}
 
 _getSettingsSelect() {
   return (
@@ -148,7 +147,7 @@ _getExperienceButtonOnPress(navigatorType) {
   };
 }
 
-
+}
 var styles = StyleSheet.create({
   outer: {
     flex: 1,
