@@ -7,12 +7,19 @@ import {
   PixelRatio,
   Linking,
   Platform,
-  TouchableHighlight
+  Image
 } from "react-native";
 
 import { mapping, light as lightTheme } from "@eva-design/eva";
-import { ApplicationProvider, Button, Text } from "react-native-ui-kitten";
-
+import {
+  ApplicationProvider,
+  Button,
+  Text,
+  TopNavigation,
+  TopNavigationAction,
+  TopNavigationActionProps
+} from "react-native-ui-kitten";
+//import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { ViroVRSceneNavigator } from "react-viro";
 
 let sharedProps = {
@@ -87,11 +94,23 @@ export default class App extends Component {
                 Welcome to Revery
               </Text>
             </View>
+            {/*
             <View style={{ padding: 10 }}>
               <Text category="s1" adjustsFontSizeToFit numberOfLines={1}>
                 Please choose your desired experience:
               </Text>
-            </View>
+            </View>*/}
+            {/* TODO: Change to the suicide hotline number*/}
+            <Button
+              size="large"
+              status="danger"
+              /*onPress={this._getExperienceButtonOnPress(
+                VR_NAVIGATOR_TYPE_EMERGENCY
+              )}*/
+              onPress={() => this.dialCall(123456789)}
+            >
+              Emergency
+            </Button>
             <View style={{ padding: 20 }}>
               <Button
                 onPress={this._getExperienceButtonOnPress(
@@ -103,17 +122,6 @@ export default class App extends Component {
                 Long Term Mode
               </Button>
             </View>
-            {/* TODO: Change to the suicide hotline number*/}
-            <Button
-              size="large"
-              status="info"
-              /*onPress={this._getExperienceButtonOnPress(
-                VR_NAVIGATOR_TYPE_EMERGENCY
-              )}*/
-              onPress={() => this.dialCall(123456789)}
-            >
-              Emergency Mode
-            </Button>
 
             <View style={{ padding: 80 }}>
               <Button
@@ -154,13 +162,24 @@ export default class App extends Component {
   _getSettingsScreen() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <Button
-          size="large"
-          status="info"
-          onPress={this._getExperienceButtonOnPress(UNSET)}
-        >
-          Go Back
-        </Button>
+        <TopNavigation
+          title="Settings"
+          leftControl={
+            <TopNavigationAction
+              icon={() => (
+                //TODO: fix me
+                <Button
+                  size="large"
+                  status="info"
+                  onPress={this._getExperienceButtonOnPress(UNSET)}
+                >
+                  Go Back
+                </Button>
+              )}
+              //onPress={this._getExperienceButtonOnPress(UNSET)}
+            />
+          }
+        />
         <SettingsScreen />
       </ApplicationProvider>
     );
