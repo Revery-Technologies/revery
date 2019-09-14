@@ -1,6 +1,6 @@
-# The Embrace
-The Embrace is an accessible VR app, intended for high school students, that aims to decrease feelings of stress and anxiety.  
-The Embrace is created by [Revery Technologies](https://revery.now.sh).
+# Revery
+Revery is an accessible VR app, intended for high school students, that aims to decrease feelings of stress and anxiety.  
+Revery is created by [Revery Technologies](https://revery.now.sh).
 ### Installation prerequisites
 
 - Download [nodejs](https://nodejs.org/en/)

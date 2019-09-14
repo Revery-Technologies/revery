@@ -11,7 +11,7 @@ import {
   Radio
 } from "react-native-ui-kitten";
 
-export default class Settings extends Component {
+export default class ImageSelection extends Component {
   constructor() {
     super();
 
@@ -21,7 +21,7 @@ export default class Settings extends Component {
   render() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <Text>The settings go here...</Text>
+        <Text>The image settings go here...</Text>
       </ApplicationProvider>
     );
   }
@@ -33,4 +33,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = Settings;
+module.exports = ImageSelection;
