@@ -3,7 +3,6 @@
 import React, { Component, AsyncStorage } from "react"; //this async storage is deprecated
 //import AsyncStorage from "@react-native-community/async-storage";
 import { StyleSheet, View } from "react-native";
-import { mapping, light as lightTheme } from "@eva-design/eva";
 import {
   ApplicationProvider,
   Button,
@@ -20,9 +19,9 @@ export default class ImageSelection extends Component {
 
   render() {
     return (
-      <ApplicationProvider mapping={mapping} theme={lightTheme}>
+      <View>
         <Text>The image settings go here...</Text>
-      </ApplicationProvider>
+      </View>
     );
   }
 }

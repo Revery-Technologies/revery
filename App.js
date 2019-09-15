@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import PropTypes from 'prop-types';
 import {
   AppRegistry,
   View,
@@ -19,7 +19,7 @@ import {
   TopNavigationAction,
   TopNavigationActionProps
 } from "react-native-ui-kitten";
-//import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+
 import { ViroVRSceneNavigator } from "react-viro";
 
 let sharedProps = {
@@ -162,24 +162,36 @@ export default class App extends Component {
   _getSettingsScreen() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <TopNavigation
-          title="Settings"
-          leftControl={
-            <TopNavigationAction
-              icon={() => (
-                //TODO: fix me
-                <Button
-                  size="large"
-                  status="info"
-                  onPress={this._getExperienceButtonOnPress(UNSET)}
-                >
-                  Go Back
-                </Button>
-              )}
-              //onPress={this._getExperienceButtonOnPress(UNSET)}
-            />
-          }
-        />
+        <View
+          style={{
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            //position: "absolute",
+            top: 0,
+            padding: 10
+          }}
+        >
+          <TopNavigation
+            title="Settings"
+            leftControl={
+              <TopNavigationAction
+                icon={() => (
+                  //TODO: fix me, this is also very ugly
+                  <Button
+                    size="large"
+                    status="info"
+                    onPress={this._getExperienceButtonOnPress(UNSET)}
+                  >
+                    Go Back
+                  </Button>
+                )}
+                //onPress={this._getExperienceButtonOnPress(UNSET)}
+              />
+            }
+          />
+        </View>
+
         <SettingsScreen />
       </ApplicationProvider>
     );
