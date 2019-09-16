@@ -28,7 +28,13 @@ export default class Settings extends Component {
   render() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <View style={{ width:"100%" }}>
+        <View
+          style={{
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
           {// we should probably check for out of bounds here
           this.state.selectedIndex == 0 && <CallSettings />}
           {this.state.selectedIndex == 1 && <ImageSelection />}

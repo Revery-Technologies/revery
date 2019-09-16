@@ -167,19 +167,18 @@ export default class App extends Component {
             width: "100%",
             justifyContent: "center",
             alignItems: "center",
-            //position: "absolute",
             top: 0,
             padding: 10
           }}
         >
           <TopNavigation
-            title="Settings"
+            title="VR Experience Settings"
             leftControl={
               <TopNavigationAction
                 icon={() => (
                   //TODO: fix me, this is also very ugly
                   <Button
-                    size="large"
+                    size="small"
                     status="info"
                     onPress={this._getExperienceButtonOnPress(UNSET)}
                   >
