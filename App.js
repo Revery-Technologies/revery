@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import {
   AppRegistry,
   View,
@@ -172,6 +172,11 @@ export default class App extends Component {
           }}
         >
           <TopNavigation
+            style={{
+              borderColor: "whitesmoke",
+              borderRadius: 5,
+              borderWidth: 5
+            }}
             title="VR Experience Settings"
             leftControl={
               <TopNavigationAction

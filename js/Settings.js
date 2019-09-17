@@ -25,6 +25,7 @@ export default class Settings extends Component {
   onTabSelect = (selectedIndex: number) => {
     this.setState({ selectedIndex });
   };
+
   render() {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
@@ -35,8 +36,7 @@ export default class Settings extends Component {
             alignItems: "center"
           }}
         >
-          {// we should probably check for out of bounds here
-          this.state.selectedIndex == 0 && <CallSettings />}
+          {this.state.selectedIndex == 0 && <CallSettings />}
           {this.state.selectedIndex == 1 && <ImageSelection />}
         </View>
         <View style={styles.navBar}>

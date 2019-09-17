@@ -2,52 +2,36 @@
 
 import React, { Component, AsyncStorage } from "react"; //this async storage is deprecated
 //import AsyncStorage from "@react-native-community/async-storage";
-import { StyleSheet, View, Keyboard } from "react-native";
+import { StyleSheet, View} from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   ApplicationProvider,
   Button,
   Text,
   Toggle,
-  Input,
-  Popover
+  Input
 } from "react-native-ui-kitten";
-
+const HOTLINENUMBER = "1-800-273-8255";
 export default class CallSettings extends Component {
-  componentDidMount() {
-    this.keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      this._keyboardDidShow
-    );
-    this.keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      this._keyboardDidHide
-    );
-  }
+  componentDidMount() {}
 
-  componentWillUnmount() {
-    this.keyboardDidShowListener.remove();
-    this.keyboardDidHideListener.remove();
-  }
-  _keyboardDidShow = () => {
-    this.setState({ keyboardOpen: true });
-  };
+  componentWillUnmount() {}
 
-  _keyboardDidHide = () => {
-    this.setState({ keyboardOpen: false });
-  };
   constructor() {
     super();
 
     this.state = {
-      keyboardOpen: false,
       checked: true,
-      inputValue: "18002738255",
+      inputValue: HOTLINENUMBER,
       popoverVisible: false
     };
   }
   //TODO: save it with async, MAKE IT WORK
   onChange = (checked: boolean) => {
     this.setState({ checked });
+    if (this.state.inputValue != HOTLINENUMBER && this.state.checked == true) {
+      this.setState({ inputValue: HOTLINENUMBER });
+    }
   };
 
   onInputValueChange = (inputValue: string) => {
@@ -67,7 +51,11 @@ export default class CallSettings extends Component {
 
   render() {
     return (
-      <View style={styles.box}>
+      <KeyboardAwareScrollView
+        resetScrollToCoords={{ x: 0, y: 0 }}
+        contentContainerStyle={styles.box}
+        scrollEnabled={false}
+      >
         <View style={styles.toggleInfo}>
           <View style={styles.horzBox}>
             <Text category="s1" status="info">
@@ -80,19 +68,13 @@ export default class CallSettings extends Component {
             />
           </View>
           <Text>
-            If this is enabled, 1-800-273-8255, the National Suicide Prevention
+            If this is enabled, {HOTLINENUMBER}, the National Suicide Prevention
             Lifeline, will be called in an emergency. This is enabled by
             default.
           </Text>
         </View>
-        {/*<Popover
-          placement="top"
-          visible={this.state.keyboardOpen}
-          content={this.renderPopoverContentElement()}
-          onBackdropPress={this.togglePopover}
-        >*/}
+
         <Input
-          //TODO: make this dismissable, I tried doing something fancy with the popover, now its all messy
           keyboardType={"phone-pad"}
           status="info"
           disabled={this.state.checked}
@@ -102,9 +84,11 @@ export default class CallSettings extends Component {
           someone other than the National Suicide Prevention Lifeline, you
           should change this number."
         />
-        {/*</Popover>*/}
-        {/* TODO: Show text here on what number will be called, for confirmation */}
-      </View>
+
+        <Text numberOfLines={1} status="info">
+          Currently set to: {this.state.inputValue}
+        </Text>
+      </KeyboardAwareScrollView>
     );
   }
 }
