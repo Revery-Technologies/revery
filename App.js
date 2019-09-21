@@ -7,9 +7,9 @@ import {
   PixelRatio,
   Linking,
   Platform,
-  Image
+  Dimensions
 } from "react-native";
-
+import Image from "react-native-scalable-image";
 import { mapping, light as lightTheme } from "@eva-design/eva";
 import {
   ApplicationProvider,
@@ -19,7 +19,6 @@ import {
   TopNavigationAction,
   TopNavigationActionProps
 } from "react-native-ui-kitten";
-
 import { ViroVRSceneNavigator } from "react-viro";
 
 let sharedProps = {
@@ -83,23 +82,28 @@ export default class App extends Component {
     return (
       <ApplicationProvider mapping={mapping} theme={lightTheme}>
         <View style={localStyles.outer}>
+          <View
+            style={{
+              paddingBottom: 60,
+              alignItems: "center",
+              top: 30,
+              left: 0,
+              right: 0,
+              position: "absolute"
+            }}
+          >
+            <Image
+              width={Dimensions.get("window").width * 0.7}
+              resizeMode="contain"
+              source={require("./assets/logos/ReveryFullLogo.png")}
+            />
+          </View>
           <View style={localStyles.inner}>
             <View style={{ padding: 10 }}>
-              <Text
-                category="h4"
-                adjustsFontSizeToFit
-                numberOfLines={1}
-                styles={localStyles.titleText}
-              >
-                Welcome to Revery
+              <Text category="s1" adjustsFontSizeToFit numberOfLines={1}>
+                Select your desired VR experience
               </Text>
             </View>
-            {/*
-            <View style={{ padding: 10 }}>
-              <Text category="s1" adjustsFontSizeToFit numberOfLines={1}>
-                Please choose your desired experience:
-              </Text>
-            </View>*/}
             {/* TODO: Change to the suicide hotline number*/}
             <Button
               size="large"
@@ -109,7 +113,7 @@ export default class App extends Component {
               )}*/
               onPress={() => this.dialCall(123456789)}
             >
-              Emergency
+              Emergency Mode
             </Button>
             <View style={{ padding: 20 }}>
               <Button
@@ -119,19 +123,22 @@ export default class App extends Component {
                 size="large"
                 status="info"
               >
-                Long Term Mode
+                Exercise Mode
               </Button>
             </View>
-
-            <View style={{ padding: 80 }}>
-              <Button
-                size="large"
-                status="info"
-                onPress={this._getExperienceButtonOnPress(SETTINGS)}
-              >
-                Settings
-              </Button>
-            </View>
+          </View>
+          <View style={{ bottom: 5, left: 5, position: "absolute" }}>
+            <Button
+              icon={() => (
+                <Image
+                  width={Dimensions.get("window").width * 0.07}
+                  source={require("./assets/icons/icons8-settings-100.png")}
+                />
+              )}
+              size="large"
+              appearance="ghost"
+              onPress={this._getExperienceButtonOnPress(SETTINGS)}
+            ></Button>
           </View>
         </View>
       </ApplicationProvider>

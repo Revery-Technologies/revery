@@ -2,7 +2,7 @@
 
 import React, { Component, AsyncStorage } from "react"; //this async storage is deprecated
 //import AsyncStorage from "@react-native-community/async-storage";
-import { StyleSheet, View} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import {
   ApplicationProvider,
@@ -72,6 +72,9 @@ export default class CallSettings extends Component {
             Lifeline, will be called in an emergency. This is enabled by
             default.
           </Text>
+          <Text numberOfLines={1} status="info">
+            Currently set to: {this.state.inputValue}
+          </Text>
         </View>
 
         <Input
@@ -83,11 +86,8 @@ export default class CallSettings extends Component {
           label="If you are not in the United States or you would like to call
           someone other than the National Suicide Prevention Lifeline, you
           should change this number."
+          caption="For your own safety, please ensure that this phone number is correct."
         />
-
-        <Text numberOfLines={1} status="info">
-          Currently set to: {this.state.inputValue}
-        </Text>
       </KeyboardAwareScrollView>
     );
   }
