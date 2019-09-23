@@ -45,7 +45,7 @@ export default class LongTermMode extends Component {
       });
   }
 
-  _onButtoTap() {
+  _onButtonTap() {
       this.setState({
           buttonStateTag: "onTap",
           run: true
