@@ -8,7 +8,8 @@ import {
   ViroScene,
   ViroText,
   Viro360Image,
-  ViroButton
+  ViroButton,
+  ViroAnimations
 } from 'react-viro';
 
 export default class LongTermMode extends Component {
@@ -32,7 +33,8 @@ export default class LongTermMode extends Component {
             height={2}
             width={3}
             onTap={this._onButtonTap}
-            onGaze={this._onButtonGaze} />
+            onGaze={this._onButtonGaze}
+            animation = {{name:'animateButton', run:false}}  />
       </ViroScene>
     );
   }
@@ -45,12 +47,18 @@ export default class LongTermMode extends Component {
 
   _onButtoTap() {
       this.setState({
-          buttonStateTag: "onTap"
+          buttonStateTag: "onTap",
+          run: true
       });
+      console.log("tapped!");
   }
 
 }
 
+ViroAnimations.registerAnimations({
+  animateButton:{properties:{opacity: 0},
+        easing:"EaseInEaseOut", duration: 5000},
+});
 
 var styles = StyleSheet.create({
   textStyle: {
