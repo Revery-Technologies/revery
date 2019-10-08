@@ -1,9 +1,10 @@
 "use strict";
-
-import React, { Component, AsyncStorage } from "react"; //this async storage is deprecated
-//import AsyncStorage from "@react-native-community/async-storage";
-import { StyleSheet, View } from "react-native";
+let _ = require("lodash");
+import React, { Component } from "react";
+import { StyleSheet, View, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import AsyncStorage from "@react-native-community/async-storage";
+
 import {
   ApplicationProvider,
   Button,
@@ -11,9 +12,12 @@ import {
   Toggle,
   Input
 } from "react-native-ui-kitten";
-const HOTLINENUMBER = "1-800-273-8255";
+const HOTLINENUMBER = "8002738255";
+const PhoneNumber = require("google-libphonenumber").PhoneNumberUtil.getInstance();
 export default class CallSettings extends Component {
-  componentDidMount() {}
+  async componentDidMount() {
+    this.getData();
+  }
 
   componentWillUnmount() {}
 
@@ -23,7 +27,7 @@ export default class CallSettings extends Component {
     this.state = {
       checked: true,
       inputValue: HOTLINENUMBER,
-      popoverVisible: false
+      validPhone: null
     };
   }
   //TODO: save it with async, MAKE IT WORK
@@ -35,20 +39,65 @@ export default class CallSettings extends Component {
   };
 
   onInputValueChange = (inputValue: string) => {
-    this.setState({ inputValue });
-  };
-  togglePopover = () => {
-    this.setState({ popoverVisible: !this.state.popoverVisible });
+    this.setState({ inputValue: inputValue });
   };
 
-  renderPopoverContentElement = (): React.ReactElement<ViewProps> => {
-    return (
-      <View>
-        <Text>Submit.</Text>
-      </View>
-    );
+  saveNumber = async number => {
+    let testNumber = PhoneNumber.parse(this.state.inputValue, "US");
+    if (PhoneNumber.isPossibleNumber(testNumber)) {
+      this.setState({ validPhone: testNumber.getNationalNumber() });
+      try {
+        await AsyncStorage.setItem(
+          "emergency-number",
+          JSON.stringify(this.state.validPhone)
+        );
+        this.setState({ saved: true });
+        Alert.alert(
+          "The emergency call number has been updated",
+          "In case of an emergency, " +
+            this.state.validPhone +
+            " will be called.",
+          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+          { cancelable: false }
+        );
+      } catch (e) {
+        Alert.alert(
+          "Error: Your emergency number was not saved.",
+          "Try again.",
+          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+          { cancelable: false }
+        );
+      }
+    }
   };
 
+  getData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("emergency-number");
+      Alert.alert(
+        "Number found",
+        "IT IS: " + value,
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
+      if (value !== null && typeof value == "string") {
+        Alert.alert(
+          "Number found",
+          "IT IS: " + value,
+          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+          { cancelable: false }
+        );
+        this.setState({ validPhone: value });
+      }
+    } catch (e) {
+      Alert.alert(
+        "No Number found saved",
+        "Emergency contact number not saved. Try again.",
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
+    }
+  };
   render() {
     return (
       <KeyboardAwareScrollView
@@ -72,9 +121,6 @@ export default class CallSettings extends Component {
             Lifeline, will be called in an emergency. This is enabled by
             default.
           </Text>
-          <Text numberOfLines={1} status="info">
-            Currently set to: {this.state.inputValue}
-          </Text>
         </View>
 
         <Input
@@ -86,8 +132,27 @@ export default class CallSettings extends Component {
           label="If you are not in the United States or you would like to call
           someone other than the National Suicide Prevention Lifeline, you
           should change this number."
-          caption="For your own safety, please ensure that this phone number is correct."
         />
+        <View
+          style={{
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between"
+          }}
+        >
+          <Text numberOfLines={2} status="info">
+            Configured to call:{"\n" + this.state.validPhone}
+          </Text>
+          <Button
+            status="info"
+            onPress={() => this.saveNumber(this.state.inputValue)}
+          >
+            Save
+          </Button>
+          <Button status="info" onPress={() => this.getData()}>
+            Get
+          </Button>
+        </View>
       </KeyboardAwareScrollView>
     );
   }

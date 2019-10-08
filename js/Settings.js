@@ -1,8 +1,8 @@
 "use strict";
 
-import React, { Component, AsyncStorage } from "react"; //this async storage is deprecated
+import React, { Component} from "react"; //this async storage is deprecated
 //import AsyncStorage from "@react-native-community/async-storage";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, AsyncStorage } from "react-native";
 import { mapping, light as lightTheme } from "@eva-design/eva";
 import {
   ApplicationProvider,

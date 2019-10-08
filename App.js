@@ -175,6 +175,7 @@ export default class App extends Component {
             justifyContent: "center",
             alignItems: "center",
             top: 0,
+            marginTop:30,
             padding: 10
           }}
         >
@@ -197,7 +198,6 @@ export default class App extends Component {
                     Go Back
                   </Button>
                 )}
-                //onPress={this._getExperienceButtonOnPress(UNSET)}
               />
             }
           />

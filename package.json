@@ -1,6 +1,6 @@
 {
   "name": "revery",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "prestart": "./node_modules/react-viro/bin/run_ngrok.sh",
@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@eva-design/eva": "^1.0.1",
-    "@react-native-community/async-storage": "^1.6.1",
+    "@react-native-community/async-storage": "^1.6.2",
+    "google-libphonenumber": "^3.2.5",
+    "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-native": "^0.59.3",
+    "react-native-fs": "^2.14.1",
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-scalable-image": "^1.0.0",
-    "react-native-svg": "^9.9.4",
     "react-native-ui-kitten": "^4.1.1",
     "react-viro": "2.16.0"
   },
