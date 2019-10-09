@@ -10,7 +10,7 @@
   "dependencies": {
     "@eva-design/eva": "^1.0.1",
     "@react-native-community/async-storage": "^1.6.2",
-    "google-libphonenumber": "^3.2.5",
+    "libphonenumber-js": "^1.7.25",
     "lodash": "^4.17.15",
     "react": "16.8.3",
     "react-native": "^0.59.3",

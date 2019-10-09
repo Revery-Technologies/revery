@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Alert } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import AsyncStorage from "@react-native-community/async-storage";
-
+import { AsYouType } from "libphonenumber-js";
 import {
   ApplicationProvider,
   Button,
@@ -12,8 +12,7 @@ import {
   Toggle,
   Input
 } from "react-native-ui-kitten";
-const HOTLINENUMBER = "8002738255";
-const PhoneNumber = require("google-libphonenumber").PhoneNumberUtil.getInstance();
+const HOTLINENUMBER = "(800) 273-8255";
 export default class CallSettings extends Component {
   async componentDidMount() {
     this.getData();
@@ -30,69 +29,60 @@ export default class CallSettings extends Component {
       validPhone: null
     };
   }
-  //TODO: save it with async, MAKE IT WORK
+
   onChange = (checked: boolean) => {
     this.setState({ checked });
     if (this.state.inputValue != HOTLINENUMBER && this.state.checked == true) {
       this.setState({ inputValue: HOTLINENUMBER });
+      this.saveNumber(HOTLINENUMBER);
     }
   };
 
-  onInputValueChange = (inputValue: string) => {
-    this.setState({ inputValue: inputValue });
+  onInputValueChange = async (inputValue: string) => {
+    let num = new AsYouType("US").input(inputValue);
+    this.setState({ inputValue: num });
   };
 
   saveNumber = async number => {
-    let testNumber = PhoneNumber.parse(this.state.inputValue, "US");
-    if (PhoneNumber.isPossibleNumber(testNumber)) {
-      this.setState({ validPhone: testNumber.getNationalNumber() });
-      try {
-        await AsyncStorage.setItem(
-          "emergency-number",
-          JSON.stringify(this.state.validPhone)
-        );
-        this.setState({ saved: true });
-        Alert.alert(
-          "The emergency call number has been updated",
-          "In case of an emergency, " +
-            this.state.validPhone +
-            " will be called.",
-          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-          { cancelable: false }
-        );
-      } catch (e) {
-        Alert.alert(
-          "Error: Your emergency number was not saved.",
-          "Try again.",
-          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-          { cancelable: false }
-        );
-      }
+    let num = new AsYouType("US").input(number);
+    this.setState({ validPhone: num });
+    //validate here
+    try {
+      await AsyncStorage.setItem("emergency-number", num);
+      Alert.alert(
+        "The emergency call number has been updated",
+        "In case of an emergency, " +
+          (await AsyncStorage.getItem("emergency-number")) +
+          " will be called.",
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
+    } catch (e) {
+      Alert.alert(
+        "Error: Your emergency number was not saved.",
+        "Please try again.",
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
     }
   };
 
   getData = async () => {
     try {
-      const value = await AsyncStorage.getItem("emergency-number");
-      Alert.alert(
-        "Number found",
-        "IT IS: " + value,
-        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-        { cancelable: false }
+      let value = new AsYouType("US").input(
+        await AsyncStorage.getItem("emergency-number")
       );
       if (value !== null && typeof value == "string") {
-        Alert.alert(
-          "Number found",
-          "IT IS: " + value,
-          [{ text: "OK", onPress: () => console.log("OK Pressed") }],
-          { cancelable: false }
-        );
         this.setState({ validPhone: value });
+        if (this.state.validPhone != HOTLINENUMBER) {
+          this.setState({ checked: false });
+          this.setState({ inputValue: this.state.validPhone });
+        }
       }
     } catch (e) {
       Alert.alert(
-        "No Number found saved",
-        "Emergency contact number not saved. Try again.",
+        "Error",
+        "There was a problem retrieving the saved phone number.",
         [{ text: "OK", onPress: () => console.log("OK Pressed") }],
         { cancelable: false }
       );
@@ -141,16 +131,13 @@ export default class CallSettings extends Component {
           }}
         >
           <Text numberOfLines={2} status="info">
-            Configured to call:{"\n" + this.state.validPhone}
+            Currently configured to call:{"\n" + this.state.validPhone}
           </Text>
           <Button
             status="info"
             onPress={() => this.saveNumber(this.state.inputValue)}
           >
             Save
-          </Button>
-          <Button status="info" onPress={() => this.getData()}>
-            Get
           </Button>
         </View>
       </KeyboardAwareScrollView>
