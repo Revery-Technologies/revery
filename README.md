@@ -7,20 +7,23 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 - If on mac install:
   - homebrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
   - watchman - `brew install watchman`
+  - Have xcode installed
 - If on windows (probably?) install:
   - Python 2
   - JDK
+  - Android studio
 - run `npm install -g react-viro-cli react-native-cli ngrok`
-- Viro Media App on your phone
+- ~~Viro Media App on your phone~~
+    - Due to our use of native modules, development of the app within the Viro testbed is no longer supported.
 
 ## Getting Started
 
-- run `npm install` in the directory
-- run `npm run start`
-- Open the Viro Media App and tap on the menu icon in the top left and tap on "Enter Testbed".
-    - Find the ngrok url that was printed in terminal and enter it into the app.
-- Once the app has loaded on the testbed and you have made changes that you would like to see (make sure to save the file), shake your phone (yes shake), you will see a pop up and click the reload button.
-    - You may want to enable Live Reload. This will reload the app automatically whenever you save a file.
+- For mac 
+    - run `npm install`
+    - then `cd ios && pod install && open revery.xcworkspace/`
+        - Xcode will open - press the play button in the top bar
+- For windows
+    - ...
 
 ## Oversimplified Project Structure
 
