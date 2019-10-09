@@ -20,8 +20,12 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 
 - For mac 
     - run `npm install`
-    - then `cd ios && pod install && open revery.xcworkspace/`
-        - Xcode will open - press the play button in the top bar
+    - In the `ios` directory, run `pod install`.
+    - There are two ways you can run the application:
+        - open `ios/revery.xcworkspace`
+            - Xcode will open - press the play button in the top bar
+            - You can refresh the app in the simulator by pressing `command` & `r`
+        - run `react-native run-ios`
 - For windows
     - ...
 
