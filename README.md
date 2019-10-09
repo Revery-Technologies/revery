@@ -7,7 +7,7 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 - If on mac install:
   - homebrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
   - watchman - `brew install watchman`
-  - Have xcode installed
+  - Have Xcode installed
 - If on windows (probably?) install:
   - Python 2
   - JDK
