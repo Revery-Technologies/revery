@@ -156,6 +156,7 @@ android {
 }
 
 dependencies {
+    implementation project(':@react-native-community_async-storage')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.facebook.react:react-native:+'
