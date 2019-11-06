@@ -12,53 +12,129 @@ import {
   ViroAnimations
 } from 'react-viro';
 
+let SETTINGS = "SETTINGS";
+let TYPES = "TYPES";
+let EXERCISES = "EXERCISES";
+let BOXBREATHE = "BOXBREATHE";
+
+let defaultView = SETTINGS;
+
 export default class LongTermMode extends Component {
 
   constructor() {
     super();
 
-    this.state = {} // Set initial state here
+    this.state = {
+      view: defaultView,
+    }; // Set initial state here
+
+    this._getLongTermSettings = this._getLongTermSettings.bind(this);
+    this._getTypeSettings = this._getTypeSettings.bind(this);
+    this._getExercises = this._getExercises.bind(this);
+
+
   }
+
 
   render() {
-    return (
-      <ViroScene>
-        <Viro360Image source={require('./res/guadalupe_360.jpg')} />
-        <ViroText text="This is long term mode." width={2} height={2} position={[0, 0, -1]} style={styles.textStyle} />
-        <ViroButton
-            source={require("./res/base_button.png")}
-            gazeSource={require("./res/button_ongaze.png")}
-            tapSource={require("./res/button_ontap.png")}
-            position={[0, .5, -2]}
-            height={2}
-            width={3}
-            onTap={this._onButtonTap}
-            onGaze={this._onButtonGaze}
-            animation = {{name:'animateButton', run:false}}  />
-      </ViroScene>
-    );
+    if(this.state.view == SETTINGS){
+      return this._getLongTermSettings();
+    } else if(this.state.view == TYPES){
+    return this._getTypeSettings();
+  } else if(this.state.view == EXERCISES){
+    return this._getExercises();
+  } else {
+      return this._getLongTermSettings();
+    }
   }
 
-  _onButtonGaze() {
+_getLongTermSettings(){
+  return (
+    <ViroScene>
+      <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+      <ViroText text="Welcome to Long-Term Mode."
+      width={2} height={2} position={[0, .8, -1]} style={styles.textStyle} />
+      <ViroText text="Welcome to Long-Term Mode."
+      width={2} height={2} position={[0, .5, 0]} style={styles.textStyle} />
+      <Button
+          source={require("./res/base_button.png")}
+          position={[0, .5, -2]}
+          height={2}
+          width={3}
+          onClick = {this._getScreenOnPress(TYPES)}
+          >
+        Button
+          </Button>
+    </ViroScene>
+  );
+}
+
+_getTypeSettings(){
+  return (
+    <ViroScene>
+      <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+      <ViroText
+      text="Categories" width={2} height={2} position={[0, .7, -1]}
+      style={styles.textStyle} />
+      <ViroButton
+          source={require("./res/base_button.png")}
+          position={[0, .5, -2]}
+          height={2}
+          width={3}
+          onClick = {this._getScreenOnPress(EXERCISES)}
+          />
+
+
+      <ViroButton
+          source={require("./res/base_button.png")}
+          position={[0, -1, -2]}
+          height={2}
+          width={3}
+          onClick = {this._getScreenOnPress(SETTINGS)}
+          />
+    </ViroScene>
+  );
+}
+
+_getExercises(){
+  return(
+  <ViroScene>
+  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+  <ViroText
+  text="Mindfulness" width={2} height={2} position={[0, .7, -1]}
+  style={styles.textStyle} />
+
+  <ViroButton
+      source={require("./res/base_button.png")}
+      position={[0, .5, -2]}
+      height={2}
+      width={3}
+      onClick = {this._getScreenOnPress(SETTINGS)}
+      />
+
+
+  </ViroScene>
+);
+
+}
+
+_getScreenOnPress(viewType) {
+  return () => {
+    this.setState({
+      view: viewType,
+    });
+  };
+}
+
+_onButtonGaze() {
       this.setState({
           buttonStateTag: "onGaze"
       });
   }
 
-  _onButtonTap() {
-      this.setState({
-          buttonStateTag: "onTap",
-          run: true
-      });
-      console.log("tapped!");
-  }
 
 }
 
-ViroAnimations.registerAnimations({
-  animateButton:{properties:{opacity: 0},
-        easing:"EaseInEaseOut", duration: 5000},
-});
 
 var styles = StyleSheet.create({
   textStyle: {
