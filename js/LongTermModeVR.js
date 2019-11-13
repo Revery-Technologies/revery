@@ -15,6 +15,8 @@ import {
 let SETTINGS = "SETTINGS";
 let TYPES = "TYPES";
 let EXERCISES = "EXERCISES";
+
+
 let BOXBREATHE = "BOXBREATHE";
 
 let defaultView = SETTINGS;
@@ -26,11 +28,13 @@ export default class LongTermMode extends Component {
 
     this.state = {
       view: defaultView,
+      videoMode: false,
     }; // Set initial state here
 
     this._getLongTermSettings = this._getLongTermSettings.bind(this);
     this._getTypeSettings = this._getTypeSettings.bind(this);
     this._getExercises = this._getExercises.bind(this);
+    this._sleep = this._sleep.bind(this);
 
 
   }
@@ -40,12 +44,12 @@ export default class LongTermMode extends Component {
     if(this.state.view == SETTINGS){
       return this._getLongTermSettings();
     } else if(this.state.view == TYPES){
-    return this._getTypeSettings();
-  } else if(this.state.view == EXERCISES){
-    return this._getExercises();
-  } else {
-      return this._getLongTermSettings();
-    }
+      return this._getTypeSettings();
+    } else if(this.state.view == EXERCISES){
+      return this._getExercises();
+    } else {
+        return this._getLongTermSettings();
+      }
   }
 
 _getLongTermSettings(){
@@ -54,19 +58,16 @@ _getLongTermSettings(){
       <Viro360Image source={require('./res/guadalupe_360.jpg')} />
       <ViroText text="Welcome to Long-Term Mode."
       width={2} height={2} position={[0, .8, -1]} style={styles.textStyle} />
-      <ViroText text="Welcome to Long-Term Mode."
-      width={2} height={2} position={[0, .5, 0]} style={styles.textStyle} />
-      <Button
-          source={require("./res/base_button.png")}
+      <ViroButton
+          source={require("./res/begin_button.png")}
           position={[0, .5, -2]}
           height={2}
           width={3}
           onClick = {this._getScreenOnPress(TYPES)}
-          >
-        Button
-          </Button>
+          />
     </ViroScene>
   );
+
 }
 
 _getTypeSettings(){
@@ -74,24 +75,40 @@ _getTypeSettings(){
     <ViroScene>
       <Viro360Image source={require('./res/guadalupe_360.jpg')} />
       <ViroText
-      text="Categories" width={2} height={2} position={[0, .7, -1]}
+      text="Categories" width={2} height={2} position={[0, 1, -1]}
       style={styles.textStyle} />
       <ViroButton
-          source={require("./res/base_button.png")}
-          position={[0, .5, -2]}
+          source={require("./res/mindfulness_button.png")}
+          position={[0, .8, -2]}
           height={2}
           width={3}
           onClick = {this._getScreenOnPress(EXERCISES)}
           />
 
+        <ViroButton
+            source={require("./res/wellness_button.png")}
+            position={[1.5, -.6, -2]}
+            height={2}
+            width={3}
+            onClick = {this._getScreenOnPress(EXERCISES)}
+            />
+
 
       <ViroButton
-          source={require("./res/base_button.png")}
-          position={[0, -1, -2]}
+          source={require("./res/awareness_button.png")}
+          position={[-1, -.6, -2]}
+          height={2}
+          width={3}
+          onClick = {this._getScreenOnPress(EXERCISES)}
+          />
+
+      <ViroButton
+          source={require("./res/back_button.png")}
+          position={[0, -1.9, -2]}
           height={2}
           width={3}
           onClick = {this._getScreenOnPress(SETTINGS)}
-          />
+        />
     </ViroScene>
   );
 }
@@ -104,9 +121,13 @@ _getExercises(){
   text="Mindfulness" width={2} height={2} position={[0, .7, -1]}
   style={styles.textStyle} />
 
+  <ViroText
+  text="- Box Breathing" width={2} height={2} position={[0, .5, -1]}
+  style={styles.textStyle} onClick =  {this._playVideo(SETTINGS)} visible = {this.videoMode}/>
+
   <ViroButton
-      source={require("./res/base_button.png")}
-      position={[0, .5, -2]}
+      source={require("./res/back_button.png")}
+      position={[0, 0, -2]}
       height={2}
       width={3}
       onClick = {this._getScreenOnPress(SETTINGS)}
@@ -116,6 +137,15 @@ _getExercises(){
   </ViroScene>
 );
 
+}
+
+
+_playVideo(viewType) {
+  return () => {
+    this.setState({
+      view: viewType,
+    });
+  };
 }
 
 _getScreenOnPress(viewType) {
@@ -132,6 +162,15 @@ _onButtonGaze() {
       });
   }
 
+_sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 
 }
 
@@ -144,6 +183,7 @@ var styles = StyleSheet.create({
     textAlignVertical: 'center',
     textAlign: 'center',
   },
+
 });
 
 module.exports = LongTermMode;
