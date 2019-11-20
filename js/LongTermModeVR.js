@@ -9,7 +9,7 @@ import {
   ViroText,
   Viro360Image,
   ViroButton,
-  ViroAnimations
+  ViroVideo
 } from 'react-viro';
 
 let SETTINGS = "SETTINGS";
@@ -34,7 +34,7 @@ export default class LongTermMode extends Component {
     this._getLongTermSettings = this._getLongTermSettings.bind(this);
     this._getTypeSettings = this._getTypeSettings.bind(this);
     this._getExercises = this._getExercises.bind(this);
-    this._sleep = this._sleep.bind(this);
+
 
 
   }
@@ -123,15 +123,25 @@ _getExercises(){
 
   <ViroText
   text="- Box Breathing" width={2} height={2} position={[0, .5, -1]}
-  style={styles.textStyle} onClick =  {this._playVideo(SETTINGS)} visible = {this.videoMode}/>
+  style={styles.textStyle} onClick =  {this._noVideo(false)} visible = {this.videoMode}/>
+
+  <ViroVideo
+    source={require('./res/BoxBreathe.mp4')}
+    loop={true}
+    position={[0, .5, -1]}
+    scale={[2, 2, 0]}
+    visible = {this.videoMode}
+    />
 
   <ViroButton
       source={require("./res/back_button.png")}
-      position={[0, 0, -2]}
+      position={[0, -1, -2]}
       height={2}
       width={3}
-      onClick = {this._getScreenOnPress(SETTINGS)}
+      onClick ={this._getScreenOnPress(SETTINGS)}
+      visible ={this.videoMode}
       />
+
 
 
   </ViroScene>
@@ -140,10 +150,10 @@ _getExercises(){
 }
 
 
-_playVideo(viewType) {
+_noVideo(setTo) {
   return () => {
     this.setState({
-      view: viewType,
+      videoMode: setTo,
     });
   };
 }
@@ -161,15 +171,6 @@ _onButtonGaze() {
           buttonStateTag: "onGaze"
       });
   }
-
-_sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
 
 
 }
