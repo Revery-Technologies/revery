@@ -29,6 +29,7 @@ export default class LongTermMode extends Component {
     this.state = {
       view: defaultView,
       videoMode: false,
+      textMode: true,
     }; // Set initial state here
 
     this._getLongTermSettings = this._getLongTermSettings.bind(this);
@@ -119,27 +120,29 @@ _getExercises(){
   <Viro360Image source={require('./res/guadalupe_360.jpg')} />
   <ViroText
   text="Mindfulness" width={2} height={2} position={[0, .7, -1]}
-  style={styles.textStyle} />
+  onClick =  {this._playVideo(false, true)} visible = {this.state.textMode} style={styles.textStyle}
+  />
 
   <ViroText
   text="- Box Breathing" width={2} height={2} position={[0, .5, -1]}
-  style={styles.textStyle} onClick =  {this._noVideo(false)} visible = {this.videoMode}/>
+  style={styles.textStyle} onClick =  {this._playVideo(false, true)} visible = {this.state.textMode}
+  />
 
   <ViroVideo
     source={require('./res/BoxBreathe.mp4')}
     loop={true}
     position={[0, .5, -1]}
-    scale={[2, 2, 0]}
-    visible = {this.videoMode}
+    visible = {this.state.videoMode}
+    paused={this.state.textMode}
     />
 
   <ViroButton
       source={require("./res/back_button.png")}
-      position={[0, -1, -2]}
+      position={[0, -1, -3]}
       height={2}
       width={3}
       onClick ={this._getScreenOnPress(SETTINGS)}
-      visible ={this.videoMode}
+      visible ={true}
       />
 
 
@@ -150,10 +153,11 @@ _getExercises(){
 }
 
 
-_noVideo(setTo) {
+_playVideo(setText, setVideo) {
   return () => {
     this.setState({
-      videoMode: setTo,
+      textMode: setText,
+      videoMode: setVideo,
     });
   };
 }
