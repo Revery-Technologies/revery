@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-
+import { ReactMic } from 'react-mic';
 import {StyleSheet} from 'react-native';
 
 import {
@@ -9,12 +9,14 @@ import {
   ViroText,
   Viro360Image,
   ViroButton,
-  ViroVideo
+  ViroVideo,
+  ViroImage
 } from 'react-viro';
 
 let SETTINGS = "SETTINGS";
 let TYPES = "TYPES";
 let EXERCISES = "EXERCISES";
+let WELLNESS = "WELLNESS";
 
 
 let BOXBREATHE = "BOXBREATHE";
@@ -23,6 +25,7 @@ let defaultView = SETTINGS;
 
 export default class LongTermMode extends Component {
 
+  //constructor that creates the component, binds the methods, and creates state variables
   constructor() {
     super();
 
@@ -30,17 +33,19 @@ export default class LongTermMode extends Component {
       view: defaultView,
       videoMode: false,
       textMode: true,
+      record: false,
     }; // Set initial state here
 
     this._getLongTermSettings = this._getLongTermSettings.bind(this);
     this._getTypeSettings = this._getTypeSettings.bind(this);
     this._getExercises = this._getExercises.bind(this);
+    this._getWellness= this._getWellness.bind(this);
 
 
 
   }
 
-
+  //render the view based on the view state variable
   render() {
     if(this.state.view == SETTINGS){
       return this._getLongTermSettings();
@@ -48,11 +53,14 @@ export default class LongTermMode extends Component {
       return this._getTypeSettings();
     } else if(this.state.view == EXERCISES){
       return this._getExercises();
+    } else if(this.state.view == WELLNESS){
+      return this._getWellness();
     } else {
         return this._getLongTermSettings();
       }
   }
 
+//this returns a menu with just a button to begin the experience
 _getLongTermSettings(){
   return (
     <ViroScene>
@@ -71,6 +79,7 @@ _getLongTermSettings(){
 
 }
 
+//Menu where user can choose between wellness, mindfulness, or awareness exercises
 _getTypeSettings(){
   return (
     <ViroScene>
@@ -83,7 +92,7 @@ _getTypeSettings(){
           position={[0, .8, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(EXERCISES)}
+          onClick = {this._getScreenOnPress(WELLNESS)}
           />
 
         <ViroButton
@@ -91,7 +100,7 @@ _getTypeSettings(){
             position={[1.5, -.6, -2]}
             height={2}
             width={3}
-            onClick = {this._getScreenOnPress(EXERCISES)}
+            onClick = {this._getScreenOnPress(WELLNESS)}
             />
 
 
@@ -100,7 +109,7 @@ _getTypeSettings(){
           position={[-1, -.6, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(EXERCISES)}
+          onClick = {this._getScreenOnPress(WELLNESS)}
           />
 
       <ViroButton
@@ -108,10 +117,41 @@ _getTypeSettings(){
           position={[0, -1.9, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(SETTINGS)}
+          onClick = {this._getScreenOnPress(WELLNESS)}
         />
     </ViroScene>
   );
+}
+
+_getWellness(){
+  return(
+  <ViroScene>
+  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+  <ViroText
+  text="Wellness" width={2} height={2} position={[0, .7, -1]}
+  />
+
+
+  <ViroImage
+    height={1}
+    width={1}
+    source={require("./res/facts.png")}
+    position={[0, .5, -1]}
+    />
+
+  <ViroButton
+      source={require("./res/back_button.png")}
+      position={[0, -1, -3]}
+      height={2}
+      width={3}
+      onClick ={this._getScreenOnPress(SETTINGS)}
+      visible ={true}
+      />
+
+
+
+  </ViroScene>
+);
 }
 
 _getExercises(){
@@ -120,7 +160,6 @@ _getExercises(){
   <Viro360Image source={require('./res/guadalupe_360.jpg')} />
   <ViroText
   text="Mindfulness" width={2} height={2} position={[0, .7, -1]}
-  onClick =  {this._playVideo(false, true)} visible = {this.state.textMode} style={styles.textStyle}
   />
 
   <ViroText
@@ -158,6 +197,14 @@ _playVideo(setText, setVideo) {
     this.setState({
       textMode: setText,
       videoMode: setVideo,
+    });
+  };
+}
+
+_record(isRecording){
+  return () => {
+    this.setState({
+      record: isRecording,
     });
   };
 }
