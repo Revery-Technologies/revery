@@ -1,8 +1,8 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { ReactMic } from 'react-mic';
 import {StyleSheet} from 'react-native';
+import { ReactMic } from 'react-mic';
 
 import {
   ViroScene,
@@ -17,7 +17,7 @@ let SETTINGS = "SETTINGS";
 let TYPES = "TYPES";
 let EXERCISES = "EXERCISES";
 let WELLNESS = "WELLNESS";
-
+let AWARENESS = "AWARENESS";
 
 let BOXBREATHE = "BOXBREATHE";
 
@@ -40,6 +40,7 @@ export default class LongTermMode extends Component {
     this._getTypeSettings = this._getTypeSettings.bind(this);
     this._getExercises = this._getExercises.bind(this);
     this._getWellness= this._getWellness.bind(this);
+    this._getAwareness = this._getAwareness.bind(this);
 
 
 
@@ -55,6 +56,8 @@ export default class LongTermMode extends Component {
       return this._getExercises();
     } else if(this.state.view == WELLNESS){
       return this._getWellness();
+    } else if(this.state.view == AWARENESS){
+      return this._getAwareness();
     } else {
         return this._getLongTermSettings();
       }
@@ -92,7 +95,7 @@ _getTypeSettings(){
           position={[0, .8, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(WELLNESS)}
+          onClick = {this._getScreenOnPress(EXERCISES)}
           />
 
         <ViroButton
@@ -109,7 +112,7 @@ _getTypeSettings(){
           position={[-1, -.6, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(WELLNESS)}
+          onClick = {this._getScreenOnPress(AWARENESS)}
           />
 
       <ViroButton
@@ -117,7 +120,7 @@ _getTypeSettings(){
           position={[0, -1.9, -2]}
           height={2}
           width={3}
-          onClick = {this._getScreenOnPress(WELLNESS)}
+          onClick = {this._getScreenOnPress(SETTINGS)}
         />
     </ViroScene>
   );
@@ -152,6 +155,58 @@ _getWellness(){
 
   </ViroScene>
 );
+}
+
+_getAwareness(){
+  return(
+  <ViroScene>
+  <ViroScene>
+  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+  <ViroText
+  text="Awareness" width={2} height={2} position={[0, .7, -1]}
+  />
+
+
+  <ViroImage
+    height={1}
+    width={1}
+    source={require("./res/facts.png")}
+    position={[0, .5, -1]}
+    />
+
+    <ViroText
+    text="Start" width={2} height={2}
+        position={[1.5, -.6, -2]}
+        height={2}
+        width={3}
+        onClick = {this._record(true)}
+        />
+
+
+    <ViroText
+        text="Stop" width={2} height={2}
+      position={[-1, -.6, -2]}
+      height={2}
+      width={3}
+      onClick = {this._record(false)}
+      />
+
+  <ViroButton
+      source={require("./res/back_button.png")}
+      position={[0, -1, -3]}
+      height={2}
+      width={3}
+      onClick ={this._getScreenOnPress(SETTINGS)}
+      visible ={true}
+      />
+
+
+
+  </ViroScene>
+
+  </ViroScene>
+);
+
 }
 
 _getExercises(){
