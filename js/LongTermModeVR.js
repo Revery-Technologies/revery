@@ -57,7 +57,7 @@ export default class LongTermMode extends Component {
     } else if(this.state.view == WELLNESS){
       return this._getWellness();
     } else if(this.state.view == AWARENESS){
-      return this._record();
+      return this._getAwareness();
     } else {
         return this._getLongTermSettings();
     }
@@ -100,7 +100,7 @@ _getTypeSettings(){
 
         <ViroButton
             source={require("./res/wellness_button.png")}
-            position={[1.5, -.6, -2]}
+            position={[2, -.6, -2]}
             height={2}
             width={3}
             onClick = {this._getScreenOnPress(WELLNESS)}
@@ -109,7 +109,7 @@ _getTypeSettings(){
 
       <ViroButton
           source={require("./res/awareness_button.png")}
-          position={[-1, -.6, -2]}
+          position={[-2, -.6, -2]}
           height={2}
           width={3}
           onClick = {this._getScreenOnPress(AWARENESS)}
@@ -129,7 +129,7 @@ _getTypeSettings(){
 _getWellness(){
   return(
   <ViroScene>
-  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+  <Viro360Image source={require('./res/wellness.jpg')} />
   <ViroText
   text="Wellness" width={2} height={2} position={[0, .7, -1]}
   />
@@ -151,8 +151,6 @@ _getWellness(){
       visible ={true}
       />
 
-
-
   </ViroScene>
 );
 }
@@ -162,7 +160,7 @@ _getWellness(){
 _getExercises(){
   return(
   <ViroScene>
-  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
+  <Viro360Image source={require('./res/mindfullness.jpeg')} />
   <ViroText
   text="Mindfulness" width={2} height={2} position={[0, .7, -1]}
   />
@@ -193,11 +191,38 @@ _getExercises(){
 
   </ViroScene>
 );
-
-
 }
 
+_getAwareness(){
+  return(
+  <ViroScene>
+  <Viro360Image source={require('./res/room.jpg')} />
+  <ViroText
+  text="Wellness" width={2} height={2} position={[0, .7, -1]}
+  />
 
+
+  <ViroText
+    height={1}
+    width={1}
+    text="Recording will go here..."
+    position={[0, .5, -1]}
+    />
+
+  <ViroButton
+      source={require("./res/back_button.png")}
+      position={[0, -1, -3]}
+      height={2}
+      width={3}
+      onClick ={this._getScreenOnPress(SETTINGS)}
+      visible ={true}
+      />
+
+  </ViroScene>
+);
+}
+
+//play video method
 _playVideo(setText, setVideo) {
   return () => {
     this.setState({
@@ -207,6 +232,7 @@ _playVideo(setText, setVideo) {
   };
 }
 
+//record in VR helper method -- not implemented, takes in a boolean and sets record to that
 _record(isRecording){
   return () => {
     this.setState({
@@ -215,6 +241,7 @@ _record(isRecording){
   };
 }
 
+//changes the menu -- takes in the view it wants and changes view to that
 _getScreenOnPress(viewType) {
   return () => {
     this.setState({
@@ -223,16 +250,13 @@ _getScreenOnPress(viewType) {
   };
 }
 
-_onButtonGaze() {
-      this.setState({
-          buttonStateTag: "onGaze"
-      });
-  }
 
 
 }
 
 
+
+//styles for font
 var styles = StyleSheet.create({
   textStyle: {
     fontFamily: 'Arial',
@@ -244,4 +268,5 @@ var styles = StyleSheet.create({
 
 });
 
+//exports module so thart App.js can access it
 module.exports = LongTermMode;
