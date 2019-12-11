@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import {StyleSheet} from 'react-native';
-import { ReactMic } from 'react-mic';
+
 
 import {
   ViroScene,
