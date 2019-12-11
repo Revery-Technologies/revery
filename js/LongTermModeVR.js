@@ -57,10 +57,10 @@ export default class LongTermMode extends Component {
     } else if(this.state.view == WELLNESS){
       return this._getWellness();
     } else if(this.state.view == AWARENESS){
-      return this._getAwareness();
+      return this._record();
     } else {
         return this._getLongTermSettings();
-      }
+    }
   }
 
 //this returns a menu with just a button to begin the experience
@@ -117,7 +117,7 @@ _getTypeSettings(){
 
       <ViroButton
           source={require("./res/back_button.png")}
-          position={[0, -1.9, -2]}
+          position={[0, -1.9, -1]}
           height={2}
           width={3}
           onClick = {this._getScreenOnPress(SETTINGS)}
@@ -157,57 +157,7 @@ _getWellness(){
 );
 }
 
-_getAwareness(){
-  return(
-  <ViroScene>
-  <ViroScene>
-  <Viro360Image source={require('./res/guadalupe_360.jpg')} />
-  <ViroText
-  text="Awareness" width={2} height={2} position={[0, .7, -1]}
-  />
 
-
-  <ViroImage
-    height={1}
-    width={1}
-    source={require("./res/facts.png")}
-    position={[0, .5, -1]}
-    />
-
-    <ViroText
-    text="Start" width={2} height={2}
-        position={[1.5, -.6, -2]}
-        height={2}
-        width={3}
-        onClick = {this._record(true)}
-        />
-
-
-    <ViroText
-        text="Stop" width={2} height={2}
-      position={[-1, -.6, -2]}
-      height={2}
-      width={3}
-      onClick = {this._record(false)}
-      />
-
-  <ViroButton
-      source={require("./res/back_button.png")}
-      position={[0, -1, -3]}
-      height={2}
-      width={3}
-      onClick ={this._getScreenOnPress(SETTINGS)}
-      visible ={true}
-      />
-
-
-
-  </ViroScene>
-
-  </ViroScene>
-);
-
-}
 
 _getExercises(){
   return(
@@ -243,6 +193,7 @@ _getExercises(){
 
   </ViroScene>
 );
+
 
 }
 
