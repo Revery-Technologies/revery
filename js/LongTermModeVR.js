@@ -1,3 +1,11 @@
+/*
+ * LongTermModeVR.java
+ * This class performs a calculation in postfix notation. This is where the program pushes numbers on to the stack,
+ * then pops off and performs a calculation on these numbers, then pushes the result back. It does this until all
+ * the operators and operands in the equation are used.
+ * Date: 10/23/19
+ * On my honor: EA
+ */
 'use strict';
 
 import React, { Component } from 'react';
