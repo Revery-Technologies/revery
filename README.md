@@ -24,19 +24,25 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 
 ## Files
 
-###App.js
+### App.js
   This is the entry point of the app. This is the screen you see when you first open the app. It contains a menu where you can call a suicide hotline or choose to go into VR. Links to LongTermMode.js and Settings.js currently.
-###/js/res
+
+### /js/res
   This is where the 360 background images and any other VR assets go. This includes images/videos displayed in VR, as well as the 360 backgrounds for VR.
-###/js/Settings.js
+
+### /js/Settings.js
   This is the file for the general settings screen. Links to CallSettings.js and ImageSettings.js.
-###/js/CallSettings.js
+
+### /js/CallSettings.js
   This is the file for the call settings. The user can either set it to automatically call the National Suicide Prevention Hotline, or add in a phone number to automatically call.
-###/js/ImageSettings.js
+
+### /js/ImageSettings.js
     This is the file for the image settings, which are not implemented yet, but will allow the user to change the background in VR to whatever is most calming to them.
-###/js/EmergencyModeVR.js
+
+### /js/EmergencyModeVR.js
   The Emergency Mode VR environment. It is currently not implemented, but it will have a VR environment where users can do an emergency hotline call when they are feeling unsafe.
-###/js/LongTermModeVR.js
+
+### /js/LongTermModeVR.js
   The Long Term Mode VR environment. Includes 3 categories of exercises, which can be accessed through a menu.
 
   First, awareness, where they can verbally talk about what's bothering them using an audio journal function (unimplemented).
@@ -46,11 +52,11 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   Third, mindfulness, where they can do breathing exercises that will help calm them down in times of stress.
 
 ## Bugs and Future Expansions
-###Bugs
+### Bugs
   - There is a settings screen bug where landscape orientation messes up the styling of the screen (will be fixed soon).
   - There have been some errors with AsyncStorage while testing which makes it impossible to test with the testbed app (it's unclear as to what caused this error and also why it began to work again).
 
-##Future Expansions
+## Future Expansions
   - Emergency Mode VR -- need to create a way that users can take a phone call within VR.
   - Image Settings -- need to create a way that users can adjust the background in VR.
   - Awareness in Long Term Mode -- need to figure out how to sense and display audio in vr for the audio journals.
