@@ -158,7 +158,7 @@ _getWellness(){
       position={[0, -1, -3]}
       height={2}
       width={3}
-      onClick ={this._getScreenOnPress(SETTINGS)}
+      onClick ={this._getScreenOnPress(TYPES)}
       visible ={true}
       />
 
@@ -194,7 +194,7 @@ _getExercises(){
       position={[0, -1, -3]}
       height={2}
       width={3}
-      onClick ={this._getScreenOnPress(SETTINGS)}
+      onClick ={this._getScreenOnPress(TYPES)}
       visible ={true}
       />
 
@@ -225,7 +225,7 @@ _getAwareness(){
       position={[0, -1, -3]}
       height={2}
       width={3}
-      onClick ={this._getScreenOnPress(SETTINGS)}
+      onClick ={this._getScreenOnPress(TYPES)}
       visible ={true}
       />
 
