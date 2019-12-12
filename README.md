@@ -55,6 +55,7 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 ### Bugs
   - There is a settings screen bug where landscape orientation messes up the styling of the screen (will be fixed soon).
   - There have been some errors with AsyncStorage while testing which makes it impossible to test with the testbed app (it's unclear as to what caused this error and also why it began to work again).
+  - When you exit VR, it quits the app instead of returning to the home menu.
 
 ## Future Expansions
   - Emergency Mode VR -- need to create a way that users can take a phone call within VR.

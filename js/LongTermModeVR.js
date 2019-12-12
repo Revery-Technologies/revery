@@ -1,8 +1,9 @@
 /*
  * LongTermModeVR.java
- * This class performs a calculation in postfix notation. This is where the program pushes numbers on to the stack,
- * then pops off and performs a calculation on these numbers, then pushes the result back. It does this until all
- * the operators and operands in the equation are used.
+ * This is the code for the VR de-stress experience. It is designed for a low-budget headset,
+ * like a Google Cardboard, and it contains activities in 3 different categories: wellness,
+ * awareness, and mindfulness. It allows you to navigate between screens using buttons, and
+ * accesses the /js/res folder for all of the media that it uses.
  * Date: 12/16/19
  * On my honor: EA
  */
