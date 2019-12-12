@@ -3,7 +3,7 @@
  * This class performs a calculation in postfix notation. This is where the program pushes numbers on to the stack,
  * then pops off and performs a calculation on these numbers, then pushes the result back. It does this until all
  * the operators and operands in the equation are used.
- * Date: 10/23/19
+ * Date: 12/16/19
  * On my honor: EA
  */
 'use strict';
@@ -42,7 +42,9 @@ export default class LongTermMode extends Component {
       videoMode: false,
       textMode: true,
       record: false,
-    }; // Set initial state here
+    };
+
+    //binds methods for getting views to the methods defined in the class
 
     this._getLongTermSettings = this._getLongTermSettings.bind(this);
     this._getTypeSettings = this._getTypeSettings.bind(this);
@@ -71,7 +73,7 @@ export default class LongTermMode extends Component {
     }
   }
 
-//this returns a menu with just a button to begin the experience
+//this returns a menu with just a button to begin the experience, no parameter
 _getLongTermSettings(){
   return (
     <ViroScene>
@@ -90,7 +92,7 @@ _getLongTermSettings(){
 
 }
 
-//Menu where user can choose between wellness, mindfulness, or awareness exercises
+//returns a menu where user chooses between wellness, mindfulness, or awareness, no parameters
 _getTypeSettings(){
   return (
     <ViroScene>
@@ -134,6 +136,7 @@ _getTypeSettings(){
   );
 }
 
+//returns a screen with wellness facts, no parameters
 _getWellness(){
   return(
   <ViroScene>
@@ -164,7 +167,7 @@ _getWellness(){
 }
 
 
-
+//returns a screen where
 _getExercises(){
   return(
   <ViroScene>
