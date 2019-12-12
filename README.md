@@ -25,6 +25,7 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 ## Files
 
 ### App.js
+  [Homescreen](/readmeRes/IMG_5392.PNG)
   This is the entry point of the app. This is the screen you see when you first open the app. It contains a menu where you can call a suicide hotline or choose to go into VR. Links to LongTermMode.js and Settings.js currently.
 
 ### /js/res
