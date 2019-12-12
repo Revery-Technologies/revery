@@ -37,7 +37,7 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   This is the file for the call settings. The user can either set it to automatically call the National Suicide Prevention Hotline, or add in a phone number to automatically call.
 
 ### /js/ImageSettings.js
-  This is the file for image settings.
+  This is the file for image settings. It is not currently implemented, but will allow users to change the backgrounds in VR to whatever makes them comfortable.
 
 ### /js/EmergencyModeVR.js
   The Emergency Mode VR environment. It is currently not implemented, but it will have a VR environment where users can do an emergency hotline call when they are feeling unsafe.
