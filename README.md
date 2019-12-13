@@ -3,10 +3,7 @@ Revery is an accessible VR app, intended for high school students, that aims to 
 Revery is created by [Revery Technologies](https://revery.now.sh). This branch of the repository uses different files than master, as it's made to be tested on the Viro Media App instead of Xcode
 
 
-```diff
-- CAUTION: 
-``` 
-***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
+## ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15` CAUTION ***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
 
 ### Installation prerequisites
 
