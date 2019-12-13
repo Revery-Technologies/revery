@@ -25,12 +25,9 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 ## Files
 
 ### App.js
-<<<<<<< HEAD
+
   ![Homescreen](/readmeRes/IMG_5392.PNG)
 
-=======
-  ![Homescreen](/readmeRes/IMG_5392.PNG =375x667)
->>>>>>> f1eafd6cf54cb17aebcf0413a0fffad9b81c2318
   This is the entry point of the app. This is the screen you see when you first open the app. It contains a menu where you can call a suicide hotline or choose to go into VR. Links to LongTermMode.js and Settings.js currently.
 
 ### /js/res
@@ -52,11 +49,12 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   This is the file for image settings. It is not currently implemented, but will allow users to change the backgrounds in VR to whatever makes them comfortable.
 
 ### /js/EmergencyModeVR.js
-![Homescreen](/readmeRes/IMG_5395.PNG)
+![Homescreen](/readmeRes/IMG_5395.jpg)
 
   The Emergency Mode VR environment. It is currently not implemented, but it will have a VR environment where users can do an emergency hotline call when they are feeling unsafe.
 
 ### /js/LongTermModeVR.js
+
 ![Homescreen](/readmeRes/IMG_5396.PNG)
 
   The Long Term Mode VR environment. Includes 3 categories of exercises, which can be accessed through a menu.
