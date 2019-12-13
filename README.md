@@ -1,6 +1,11 @@
-# Revery
+# Revery (Long Term Branch)
 Revery is an accessible VR app, intended for high school students, that aims to decrease feelings of stress and anxiety.  
-Revery is created by [Revery Technologies](https://revery.now.sh).
+Revery is created by [Revery Technologies](https://revery.now.sh). This branch of the repository uses different files than master, as it's made to be tested on the Viro Media App instead of Xcode
+
+
+## ![](https://placehold.it/15/f03c15/000000?text=+) CAUTION ![](https://placehold.it/15/f03c15/000000?text=+) 
+***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
+
 ### Installation prerequisites
 
 - Download [nodejs](https://nodejs.org/en/)
@@ -25,12 +30,9 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 ## Files
 
 ### App.js
-<<<<<<< HEAD
+
   ![Homescreen](/readmeRes/IMG_5392.PNG)
 
-=======
-  ![Homescreen](/readmeRes/IMG_5392.PNG =375x667)
->>>>>>> f1eafd6cf54cb17aebcf0413a0fffad9b81c2318
   This is the entry point of the app. This is the screen you see when you first open the app. It contains a menu where you can call a suicide hotline or choose to go into VR. Links to LongTermMode.js and Settings.js currently.
 
 ### /js/res
@@ -52,11 +54,12 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   This is the file for image settings. It is not currently implemented, but will allow users to change the backgrounds in VR to whatever makes them comfortable.
 
 ### /js/EmergencyModeVR.js
-![Homescreen](/readmeRes/IMG_5395.PNG)
+![Homescreen](/readmeRes/IMG_5395.jpg)
 
   The Emergency Mode VR environment. It is currently not implemented, but it will have a VR environment where users can do an emergency hotline call when they are feeling unsafe.
 
 ### /js/LongTermModeVR.js
+
 ![Homescreen](/readmeRes/IMG_5396.PNG)
 
   The Long Term Mode VR environment. Includes 3 categories of exercises, which can be accessed through a menu.
@@ -72,11 +75,15 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   ![Homescreen](/readmeRes/IMG_5398.PNG)
 
   Third, mindfulness, where they can do breathing exercises that will help calm them down in times of stress.
+  
+ ### other files
+ 
+ All other files are setup files for running the app, and do not correspond to the app's visuals.
 
 ## Bugs and Future Expansions
 ### Bugs
   - There is a settings screen bug where landscape orientation messes up the styling of the screen (will be fixed soon).
-  - There have been some errors with AsyncStorage while testing which makes it impossible to test with the testbed app (it's unclear as to what caused this error and also why it began to work again).
+  - Doesn't call the right number in emergency mode.
   - When you exit VR, it quits the app instead of returning to the home menu.
 
 ## Future Expansions
@@ -85,5 +92,3 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   - Awareness in Long Term Mode -- need to figure out how to sense and display audio in vr for the audio journals.
       - Tried to use [react-mic](https://www.npmjs.com/package/react-mic)
   - Wellness in Long Term Mode -- possibly implementing a sleep tracker
-
-Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed.
