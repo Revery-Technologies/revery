@@ -4,8 +4,9 @@ Revery is created by [Revery Technologies](https://revery.now.sh). This branch o
 
 
 ```diff
-- ## CAUTION: ***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
-```
+- CAUTION: 
+``` 
+***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
 
 ### Installation prerequisites
 
