@@ -74,6 +74,10 @@ Revery is created by [Revery Technologies](https://revery.now.sh). This branch o
   ![Homescreen](/readmeRes/IMG_5398.PNG)
 
   Third, mindfulness, where they can do breathing exercises that will help calm them down in times of stress.
+  
+ ### other files
+ 
+ All other files are setup files for running the app, and do not correspond to the app's visuals.
 
 ## Bugs and Future Expansions
 ### Bugs
