@@ -196,7 +196,6 @@ _getExercises(){
       height={2}
       width={3}
       onClick ={this._getScreenOnPress(TYPES)}
-      visible ={true}
       />
 
 
@@ -258,6 +257,8 @@ _getScreenOnPress(viewType) {
   return () => {
     this.setState({
       view: viewType,
+      videoMode: false,
+      textMode: true,
     });
   };
 }
