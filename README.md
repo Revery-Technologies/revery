@@ -26,29 +26,46 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
 
 ### App.js
   ![Homescreen](/readmeRes/IMG_5392.PNG)
+
   This is the entry point of the app. This is the screen you see when you first open the app. It contains a menu where you can call a suicide hotline or choose to go into VR. Links to LongTermMode.js and Settings.js currently.
 
 ### /js/res
+
   This is where the 360 background images and any other VR assets go. This includes images/videos displayed in VR, as well as the 360 backgrounds for VR.
 
 ### /js/Settings.js
+
   This is the file for the general settings screen. Links to CallSettings.js and ImageSettings.js.
 
 ### /js/CallSettings.js
+![Homescreen](/readmeRes/IMG_5393.PNG)
+
   This is the file for the call settings. The user can either set it to automatically call the National Suicide Prevention Hotline, or add in a phone number to automatically call.
 
 ### /js/ImageSettings.js
+![Homescreen](/readmeRes/IMG_5394.PNG)
+
   This is the file for image settings. It is not currently implemented, but will allow users to change the backgrounds in VR to whatever makes them comfortable.
 
 ### /js/EmergencyModeVR.js
+![Homescreen](/readmeRes/IMG_5395.PNG)
+
   The Emergency Mode VR environment. It is currently not implemented, but it will have a VR environment where users can do an emergency hotline call when they are feeling unsafe.
 
 ### /js/LongTermModeVR.js
+![Homescreen](/readmeRes/IMG_5396.PNG)
+
   The Long Term Mode VR environment. Includes 3 categories of exercises, which can be accessed through a menu.
+
+  ![Homescreen](/readmeRes/IMG_5400.PNG)
 
   First, awareness, where they can verbally talk about what's bothering them using an audio journal function (unimplemented).
 
+  ![Homescreen](/readmeRes/IMG_5399.PNG)
+
   Second, wellness, where they can learn about habits that will decrease their levels of stress, such as good sleeping habits.
+
+  ![Homescreen](/readmeRes/IMG_5398.PNG)
 
   Third, mindfulness, where they can do breathing exercises that will help calm them down in times of stress.
 
