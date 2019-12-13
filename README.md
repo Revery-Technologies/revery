@@ -1,6 +1,10 @@
-# Revery
+# Revery (Long Term Branch)
 Revery is an accessible VR app, intended for high school students, that aims to decrease feelings of stress and anxiety.  
-Revery is created by [Revery Technologies](https://revery.now.sh).
+Revery is created by [Revery Technologies](https://revery.now.sh). This branch of the repository uses different files than master, as it's made to be tested on the Viro Media App instead of Xcode
+
+
+## ***_Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed._***
+
 ### Installation prerequisites
 
 - Download [nodejs](https://nodejs.org/en/)
@@ -83,5 +87,3 @@ Revery is created by [Revery Technologies](https://revery.now.sh).
   - Awareness in Long Term Mode -- need to figure out how to sense and display audio in vr for the audio journals.
       - Tried to use [react-mic](https://www.npmjs.com/package/react-mic)
   - Wellness in Long Term Mode -- possibly implementing a sleep tracker
-
-Please do not change any dependency versions in `package.json`, this includes running `npm audit fix`. Changes may break things on the test bed.
