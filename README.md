@@ -21,11 +21,19 @@ Revery is created by [Revery Technologies](https://revery.now.sh). This branch o
 ## Getting Started
 
 - run `npm install` in the directory
-- run `npm run start`
+- run `npm start`
+
+![Homescreen](/readmeRes/instructions.png)
+
 - Open the Viro Media App and tap on the menu icon in the top left and tap on "Enter Testbed".
     - Find the ngrok url that was printed in terminal, or the IP address of the computer and enter it into the app.
+    
+![Homescreen](/readmeRes/IMG_5421.PNG)
+
 - Once the app has loaded on the testbed and you have made changes that you would like to see (make sure to save the file), shake your phone (yes shake), you will see a pop up and click the reload button.
     - You may want to enable Live Reload. This will reload the app automatically whenever you save a file.
+    
+![Homescreen](/readmeRes/IMG_5422.PNG)
 
 ## Files
 
